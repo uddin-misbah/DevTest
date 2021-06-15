@@ -18,3 +18,8 @@ variable "event_type" {
   type        = string
   default     = "OBJECT_FINALIZE"
 }
+
+variable "region" {
+default = "us-east1"
+type = string
+}
