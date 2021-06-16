@@ -1,15 +1,17 @@
 data "google_storage_project_service_account" "gcs_service_account" {
-  project = var.project_id
+  ###project_id is required
+  project = "golang-misbah"
 }
 
 resource "google_pubsub_topic" "pubsub" {
-  name = var.topic_name
+  ###topic name is required
+  name = "notifications."
 }
 
 resource "google_storage_notification" "notification" {
-  bucket         = var.bucket_name
+  bucket         = "actions_test_new2566"
   payload_format = "JSON_API_V1"
-  topic          = var.topic_name
+  topic          = "notifications."
   event_types    = [var.event_type]
 
   depends_on = [google_pubsub_topic_iam_binding.binding]
