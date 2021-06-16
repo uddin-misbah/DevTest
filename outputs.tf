@@ -1,6 +1,6 @@
 output "bucket_url" {
   description = "Bucket URL"
-  value = "https://console.cloud.google.com/storage/browser/${google_storage_bucket.storage.name}"
+  value = "https://console.cloud.google.com/storage/browser/${google_storage_bucket.misbah.name}"
 }
 
 output "topic_name" {
