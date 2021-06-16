@@ -32,12 +32,6 @@ jobs:
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
-   
-    # Generates an execution plan for Terraform
-    - name: Terraform Plan
-      run: terraform plan 
-      env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
       # On push to main, build or change infrastructure according to Terraform configuration files
       
