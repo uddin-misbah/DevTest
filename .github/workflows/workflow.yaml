@@ -33,7 +33,7 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message New Pull Request on DevTest Repo 
+        gcloud pubsub topics publish notifications. --message new null request on devtest repo 
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
        
