@@ -6,9 +6,13 @@ on:
     - main
   pull_request:
 
+env:
+  PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
 jobs:
-  terraform:
-    name: 'Terraform'
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
@@ -25,23 +29,11 @@ jobs:
       uses: google-github-actions/setup-gcloud@v0.2.0
       with:
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          project_id: ${{ secrets.PUBSUB_PROJECT }}
           export_default_credentials: true
-
-    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-      
-       # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    
-    - name: Terraform Initialize
-      run: terraform init 
+          
+    - run: |-
+        gcloud pubsub topics publish notifications. --message hello 
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
-
-      # On push to main, build or change infrastructure according to Terraform configuration files
-      
-    - name: Terraform Apply
-      run: terraform apply -auto-approve
-      env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+       
