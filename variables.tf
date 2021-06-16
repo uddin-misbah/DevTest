@@ -9,7 +9,7 @@ variable "bucket_name" {
 }
 
 variable "topic_name" {
-  description = "The topic in Pub/Sub that receives notifications."
+  default = "notifications."
   type        = string
 }
 
