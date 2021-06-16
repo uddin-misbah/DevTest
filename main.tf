@@ -3,7 +3,7 @@ data "google_storage_project_service_account" "gcs_service_account" {
   project = "golang-misbah"
 }
 
-resource "google_pubsub_topic" "pubsub" {
+data "google_pubsub_topic" "pubsub" {
   ###topic name is required
   name = "notifications."
 }
