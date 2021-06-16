@@ -1,5 +1,5 @@
 variable "project_id" {
-  description = "golang-misbah"
+  default = "golang-misbah"
   type        = string
 }
 
