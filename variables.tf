@@ -1,3 +1,8 @@
+variable "region" {
+  default = "us-east1"
+  type        = string
+}
+
 variable "project_id" {
   default = "golang-misbah"
   type        = string
