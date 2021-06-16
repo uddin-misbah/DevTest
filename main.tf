@@ -2,7 +2,7 @@ data "google_storage_project_service_account" "gcs_service_account" {
   project = var.project_id
 }
 
-resource "google_storage_bucket" "storage" {
+resource "google_storage_bucket" "misbah" {
   name = var.bucket_name
 }
 
