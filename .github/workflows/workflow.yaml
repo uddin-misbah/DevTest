@@ -33,8 +33,10 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message pullrequest
         gcloud pubsub topics publish notifications. --message createdbymisbah
+        gcloud pubsub subscriptions \
+        pull --auto-ack --limit=2 my-sub
+
 
 
 
