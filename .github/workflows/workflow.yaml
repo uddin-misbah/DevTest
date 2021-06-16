@@ -34,6 +34,9 @@ jobs:
           
     - run: |-
         gcloud pubsub topics publish notifications. --message pullrequest
-      env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        gcloud pubsub topics publish my-topic --message createdbymisbah
+
+
+
+  
        
