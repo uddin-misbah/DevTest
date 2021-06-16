@@ -34,7 +34,7 @@ jobs:
           
     - run: |-
         gcloud pubsub topics publish notifications. --message createdbymisbah
-        gcloud pubsub subscriptions pull --auto-ack --limit=2 echo
+        gcloud pubsub subscriptions pull --auto-ack echo
 
 
 
