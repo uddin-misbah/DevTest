@@ -34,7 +34,7 @@ jobs:
           
     - run: |-
         gcloud pubsub topics publish notifications. --message pullrequest
-        gcloud pubsub topics publish my-topic --message createdbymisbah
+        gcloud pubsub topics publish notifications. --message createdbymisbah
 
 
 
