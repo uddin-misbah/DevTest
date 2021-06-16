@@ -9,7 +9,7 @@ variable "project_id" {
 }
 
 variable "bucket_name" {
-  default = "actions_bucket_misbah"
+  default = "actions_test_new2566"
   type        = string
 }
 
