@@ -2,10 +2,6 @@ data "google_storage_project_service_account" "gcs_service_account" {
   project = var.project_id
 }
 
-resource "google_storage_bucket" "misbah24444" {
-  name = var.bucket_name
-}
-
 resource "google_pubsub_topic" "pubsub" {
   name = var.topic_name
 }
