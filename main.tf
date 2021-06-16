@@ -10,7 +10,7 @@ resource "google_pubsub_topic" "pubsub" {
 }
 
 resource "google_pubsub_topic_iam_binding" "binding" {
-  members = ["serviceAccount:${google_service_account.service_account.email_address}"]
+  members = ["serviceAccount:${google_service_account.service_account.email}"]
   role    = "roles/pubsub.publisher"
   topic   = google_pubsub_topic.pubsub.id
 }
