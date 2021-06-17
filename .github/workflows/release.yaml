@@ -6,7 +6,7 @@ on:
       - master
       
 env:
-    GITHUB_CONTEXT: ${{ toJson(github) }}    
+    GITHUB_CONTEXT: ${{ toJson(github.event.issue.user.login) }}    
   
 jobs:
     setup:
