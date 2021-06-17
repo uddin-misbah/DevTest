@@ -13,7 +13,8 @@ jobs:
 
   steps:
      - name: View PR author
-       run: echo "This PR is opened by ${{ github.context.event.commits.author.username }}"
+       run: echo "This PR is opened by ${{ github.context.payload.repository.owner.name }}/{{ github.context.payload.repository.name}}**.\nDiff: {{ github.context.payload.compare }}"
+       
 
       
 
