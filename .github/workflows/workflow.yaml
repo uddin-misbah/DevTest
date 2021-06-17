@@ -16,7 +16,7 @@ jobs:
     - name: Set Name
       run: |
        - name: Discord Commits
-        echo "AUTHOR_NAME: ${{ github.event.commit.author.name }}"
+        echo "AUTHOR_NAME: ${{ github.event.commits.author.name }}"
         env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
 
