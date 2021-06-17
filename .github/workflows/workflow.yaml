@@ -19,7 +19,7 @@ jobs:
     - name: Set Name
       run: |
        - name: Discord
-        echo "AUTHOR_NAME: ${{ github.event.pull_request.user.login }}"
+        echo "GITUB_CONTEXT: ${{ github.event.pull_request.user.login }}"
 
        
 
