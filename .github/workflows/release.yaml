@@ -18,6 +18,6 @@ jobs:
          steps:
          - name: Print GitHub context
            uses: actions/checkout@v2
-         - run: echo "$GITHUB_CONTEXT"
+         - run: echo GITHUB_CONTEXT
            env:
             GITHUB_CONTEXT: ${{ toJson(github.event.issue.user.login) }} 
