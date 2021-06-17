@@ -13,10 +13,8 @@ jobs:
 
   steps:
       - name: Discord Commits
-        uses: Sniddl/discord-commits@v1.3
-        with:
-          message: "Successful commit to **{{ github.context.payload.repository.owner.name }}
-
+        AUTHOR_NAME: ${{ github.event.head_commit.author.name }}
+        AUTHOR_EMAIL: ${{ github.event.head_commit.author.email }}
        
 
       
