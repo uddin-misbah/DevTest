@@ -7,17 +7,12 @@ on:
          
 
 jobs:
-    setup:
-         name: Setup, Build, Publish, and Deploy
-         runs-on: ubuntu-latest
-         
-         defaults:
-          run:
-           shell: bash
-           
-         steps:
-         - name: Print GitHub context
-           uses: actions/checkout@v2
-         - run: echo GITHUB_CONTEXT
-           env:
-            GITHUB_CONTEXT: ${{ toJson(github.event.issue.user.login) }} 
+  test:
+    runs-on: ubuntu-latest
+    env:
+      PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+    steps:
+      - name: script
+        run: |
+          echo "PR author: $PR_AUTHOR"
+        shell: bash
