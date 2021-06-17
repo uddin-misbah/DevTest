@@ -1,0 +1,21 @@
+on:
+  pull_request:
+    branches:
+      - main
+      
+  env:
+    GITHUB_CONTEXT: ${{ toJson(github) }}
+      
+   jobs:
+    setup:
+    name: Setup, Build, Publish, and Deploy
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        
+    steps:
+    - name: Print GitHub context
+      uses: actions/checkout@master
+    - run: echo "This PR is opened by ${{ github.event.issue.user.login }} ."
