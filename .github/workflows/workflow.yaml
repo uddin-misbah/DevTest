@@ -1,5 +1,19 @@
 name: 'Terraform CI'
 
+on: pull_request
+
+env:
+  PR_NUMBER: ${{ github.event.pull_request.number }}
+jobs:
+  setup-build-publish-deploy:
+    name: get request name
+    runs-on: ubuntu-latest
+    steps:
+      - name: view the PR number
+        run: |
+          echo "PR number = ${{ github.event.pull_request.number }}"
+          echo "PR number = ${{ env.PR_NUMBER }}"
+
 on:
   push:
     branches:
@@ -23,6 +37,7 @@ jobs:
     steps:
     
     - name: get names
+      uses: google-github-actions/setup-gcloud@v0.2.0
     - run: yarn deploy --stage $(echo "${{ github.event.pull_request.number}}")
     
     - name: Checkout
