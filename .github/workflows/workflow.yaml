@@ -3,8 +3,8 @@ name: 'Terraform CI'
 on:
   push:
     branches:
-    - main
-  pull_request:
+      - master
+      - develop
 
 env:
   PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
