@@ -6,8 +6,6 @@ on:
       - master
       - develop
 
-    ########## Set these variables in GitHub Secrets on Repository Level
-
 env:
   PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
