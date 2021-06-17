@@ -6,23 +6,21 @@ on:
       - master
       - develop
 
+env:
+  PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+  
 jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        shell: bash
-
-    steps:
-    - name: Send commits to master to effx
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-      uses: cjs226/effx-event-action@master
-      with:
-          name: "Push to master branch by ${{ github.event.head_commit.author.name }}"
-          desc: "${{ github.event.head_commit.message }} --> ${{ github.event.head_commit.url }}"
     
+
+defaults:
+         run:
+             shell: bash
+        
+steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Set up gcloud Cloud SDK environment
@@ -33,8 +31,5 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message createdbymisbah
-        gcloud pubsub subscriptions pull --auto-ack echo
-env:
-  PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
-  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+             gcloud pubsub topics publish notifications. --message createdbymisbah
+             gcloud pubsub subscriptions pull --auto-ack echo
