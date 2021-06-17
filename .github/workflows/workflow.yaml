@@ -33,4 +33,3 @@ jobs:
         echo "PR number = ${{ github.event.pull_request.number }}"
         gcloud pubsub topics publish notifications. --message createdbymisbah
         gcloud pubsub subscriptions pull --auto-ack echo
-		
