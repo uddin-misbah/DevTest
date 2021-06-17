@@ -7,7 +7,7 @@ on:
       - develop
   
 jobs:
-  test:
+  job1:
     runs-on: ubuntu-latest
     env:
       PR_AUTHOR: ${{ github.event.pull_request.user.login }}
@@ -17,20 +17,15 @@ jobs:
           echo "PR author: $PR_AUTHOR"
         shell: bash
 
-  setup-build-publish-deploy:
+  job2:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest  
     
-env:
-  PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
-  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-    
-
-defaults:
-         run:
-             shell: bash
-        
-steps:
+    env:
+     PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
+     GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      
+    steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Set up gcloud Cloud SDK environment
@@ -43,3 +38,4 @@ steps:
     - run: |-
              gcloud pubsub topics publish notifications. --message createdbymisbah
              gcloud pubsub subscriptions pull --auto-ack echo
+      shell: bash
