@@ -5,24 +5,38 @@ on:
     branches:
       - master
       - develop
-      
+
+    ########## Set these variables in GitHub Secrets on Repository Level
+
+env:
+  PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
 jobs:
- setup-build-publish-deploy:
-  name: Setup, Build, Publish, and Deploy
-  runs-on: ubuntu-latest
-
-  steps:
-    - uses: actions/checkout@v2
-    - name: Set Name
-    - run: |
-          echo "Hello ${{ github.event.inputs.name }}!"
-
-       
-
-      
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
+    runs-on: ubuntu-latest
 
 
+    defaults:
+      run:
+        shell: bash
 
-
-  
-       
+    steps:
+    
+    - name: get names
+    - run: yarn deploy --stage $(echo "${{ github.event.pull_request.number}}")
+    
+    - name: Checkout
+      uses: actions/checkout@v2
+    	  
+    - name: Set up gcloud Cloud SDK environment
+      uses: google-github-actions/setup-gcloud@v0.2.0
+      with:
+          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          project_id: ${{ secrets.PUBSUB_PROJECT }}
+          export_default_credentials: true
+          
+    - run: |-
+        gcloud pubsub topics publish notifications. --message createdbymisbah
+        gcloud pubsub subscriptions pull --auto-ack echo
