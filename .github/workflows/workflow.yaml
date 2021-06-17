@@ -31,6 +31,10 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        echo "PR number = ${{ github.event.pull_request.number }}"
         gcloud pubsub topics publish notifications. --message createdbymisbah
         gcloud pubsub subscriptions pull --auto-ack echo
+        
+    - name: Print GitHub context
+    - run: echo "This PR is opened by ${{ github.event.issue.user.login }} ."
+      env:
+       GITHUB_CONTEXT: ${{ toJson(github) }}
