@@ -35,6 +35,7 @@ jobs:
         gcloud pubsub subscriptions pull --auto-ack echo
         
     - name: Print GitHub context
+      uses: actions/checkout@master
     - run: echo "This PR is opened by ${{ github.event.issue.user.login }} ."
       env:
        GITHUB_CONTEXT: ${{ toJson(github) }}
