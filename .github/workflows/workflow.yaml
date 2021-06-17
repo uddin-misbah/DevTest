@@ -6,10 +6,6 @@ on:
       - master
       - develop
 
-env:
-  PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
-  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
 jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
@@ -39,3 +35,6 @@ jobs:
     - run: |-
         gcloud pubsub topics publish notifications. --message createdbymisbah
         gcloud pubsub subscriptions pull --auto-ack echo
+env:
+  PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
