@@ -9,6 +9,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+  PR_NUMBER: ${{ github.event.pull_request.number }}
 
 jobs:
   setup-build-publish-deploy:
