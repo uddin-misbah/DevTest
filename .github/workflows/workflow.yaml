@@ -5,15 +5,25 @@ on:
     branches:
       - master
       - develop
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+    steps:
+      - name: script
+        run: |
+          echo "PR author: $PR_AUTHOR"
+        shell: bash
 
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
+    runs-on: ubuntu-latest  
+    
 env:
   PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-  
-jobs:
-  setup-build-publish-deploy:
-    name: Setup, Build, Publish, and Deploy
-    runs-on: ubuntu-latest
     
 
 defaults:
