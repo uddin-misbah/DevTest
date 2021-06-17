@@ -9,7 +9,6 @@ on:
 env:
   PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-  PR_NUMBER: ${{ github.event.pull_request.number }}
 
 jobs:
   setup-build-publish-deploy:
@@ -33,9 +32,3 @@ jobs:
     - run: |-
         gcloud pubsub topics publish notifications. --message createdbymisbah
         gcloud pubsub subscriptions pull --auto-ack echo
-        
-    - name: Print GitHub context
-      uses: actions/checkout@master
-    - run: echo "This PR is opened by ${{ github.event.issue.user.login }} ."
-      env:
-       GITHUB_CONTEXT: ${{ toJson(github) }}
