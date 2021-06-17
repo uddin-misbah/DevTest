@@ -12,9 +12,12 @@ jobs:
   runs-on: ubuntu-latest
 
   steps:
-      - name: Discord Commits
-        AUTHOR_NAME: ${{ github.event.head_commit.author.name }}
-        AUTHOR_EMAIL: ${{ github.event.head_commit.author.email }}
+    - uses: actions/checkout@v2
+    - name: Set Name
+      run: |
+       - name: Discord Commits
+        echo "AUTHOR_NAME=${ github.event.head_commit.author.name }"
+        echo "AUTHOR_EMAIL=${ github.event.head_commit.author.email }"
        
 
       
