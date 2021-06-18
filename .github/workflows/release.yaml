@@ -14,5 +14,5 @@ jobs:
        steps:
        - name: script
          run: |
-          echo "$PR_AUTHOR is requesting access to mk.misbah_uddin@live.com"
+          echo "$PR_AUTHOR is requesting access to main"
          shell: bash
