@@ -11,14 +11,6 @@ env:
      PR_AUTHOR: ${{ github.event.pull_request.user.login }}
   
 jobs:
- job1:    
-  name: Setup, Build, Publish, and Deploy
-  runs-on: ubuntu-latest 
-  steps:
-       - name: script
-         run: |
-          echo "$PR_AUTHOR is requesting access to mk.misbah_uddin@live.com"
-         shell: bash
  job2: 
    name: test
    runs-on: ubuntu-latest 
@@ -35,5 +27,6 @@ jobs:
        - run: |-
              gcloud pubsub topics publish notifications. --message createdbymisbah
              gcloud pubsub subscriptions pull --auto-ack echo
+             echo "$PR_AUTHOR is requesting access to mk.misbah_uddin@live.com"
              
              shell: bash
