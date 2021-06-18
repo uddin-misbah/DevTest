@@ -10,24 +10,29 @@ env:
      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
      PR_AUTHOR: ${{ github.event.pull_request.user.login }}
   
-jobs:       
- setup-build-publish-deploy:    
-     name: Setup, Build, Publish, and Deploy
-     runs-on: ubuntu-latest 
-        
-     steps:
-     - name: Checkout
-       uses: actions/checkout@v2
-     - name: Set up gcloud Cloud SDK environment
-       uses: google-github-actions/setup-gcloud@v0.2.0
-       with:
+jobs:
+ job1:    
+  name: Setup, Build, Publish, and Deploy
+  runs-on: ubuntu-latest 
+  steps:
+       - name: script
+         run: |
+          echo "$PR_AUTHOR is requesting access to mk.misbah_uddin@live.com"
+         shell: bash
+ job2: 
+   name: test
+   runs-on: ubuntu-latest 
+   steps:
+       - name: Checkout
+         uses: actions/checkout@v2
+       - name: Set up gcloud Cloud SDK environment
+         uses: google-github-actions/setup-gcloud@v0.2.0
+         with:
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           project_id: ${{ secrets.PUBSUB_PROJECT }}
-          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
           export_default_credentials: true
           
-     - run: |-
-             echo "$PR_AUTHOR is requesting access to main"
+       - run: |-
              gcloud pubsub topics publish notifications. --message createdbymisbah
              gcloud pubsub subscriptions pull --auto-ack echo
              
