@@ -14,6 +14,7 @@ jobs:
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
        steps:
        - name: script
-         run: |
-          echo "$PR_AUTHOR is requesting merge to master"
+         uses: actions/checkout@v2
+       - run: |
+           echo "$PR_AUTHOR is requesting merge to master"
          shell: bash
