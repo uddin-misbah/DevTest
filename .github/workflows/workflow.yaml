@@ -4,28 +4,16 @@ on:
   push:
     branches:
     - main
-  pull_request:
-    branches:
-    - main
   
-jobs:
+jobs:        
   job1:
-       runs-on: ubuntu-latest
-       env:
-          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
-       steps:
-       - name: script
-         run: |
-          echo "$PR_AUTHOR is requesting access to main"
-         shell: bash
-
-  job2:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest  
     
     env:
      PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+     PR_AUTHOR: ${{ github.event.pull_request.user.login }}
       
     steps:
     - name: Checkout
@@ -38,6 +26,7 @@ jobs:
           export_default_credentials: true
           
     - run: |-
+             echo "$PR_AUTHOR is requesting access to main"
              gcloud pubsub topics publish notifications. --message createdbymisbah
              gcloud pubsub subscriptions pull --auto-ack echo
       shell: bash
