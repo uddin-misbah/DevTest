@@ -33,4 +33,4 @@ jobs:
           
     - run: |-
         gcloud pubsub topics publish notifications. --message New_PR_Merged --attribute Requestor=Misbahuddin
-        gcloud pubsub subscriptions pull --auto-ack echo
+        gcloud pubsub subscriptions pull --auto-ack echo1
