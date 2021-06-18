@@ -1,9 +1,10 @@
 name: 'Terraform CI'
 
 on:
-  pull_request:
+  push:
     branches:
-      - master
+    - main
+  pull_request:
   
 jobs:
   job1:
