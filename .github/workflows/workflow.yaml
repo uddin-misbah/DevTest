@@ -8,16 +8,6 @@ on:
   
 jobs:
   job1:
-    runs-on: ubuntu-latest
-    env:
-      PR_AUTHOR: ${{ github.event.pull_request.user.login }}
-    steps:
-      - name: script
-        run: |
-          echo "PR author: $PR_AUTHOR"
-        shell: bash
-
-  job2:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest  
     
