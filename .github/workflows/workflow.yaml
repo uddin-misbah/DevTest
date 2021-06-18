@@ -6,15 +6,15 @@ on:
     - main
   
 jobs:       
-  name: Setup, Build, Publish, and Deploy
-  runs-on: ubuntu-latest  
+ name: Setup, Build, Publish, and Deploy
+ runs-on: ubuntu-latest 
     
-  env:
+env:
    PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
    GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
    PR_AUTHOR: ${{ github.event.pull_request.user.login }}
       
-  steps:
+    steps:
   - name: Checkout
     uses: actions/checkout@v2
   - name: Set up gcloud Cloud SDK environment
