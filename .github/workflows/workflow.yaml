@@ -32,5 +32,5 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message createdbymisbah
+        gcloud pubsub topics publish notifications. --message='{"Requestor": "Misbahuddin"}
         gcloud pubsub subscriptions pull --auto-ack echo
