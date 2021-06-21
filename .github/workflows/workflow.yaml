@@ -31,4 +31,4 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message startInstancePubSub --attribute "zone":"us-central1-a", "label":"schedule=test"
+        gcloud pubsub topics publish notifications. --message startInstancePubSub --attribute zone:"us-central1-a", label:"schedule=test"
