@@ -31,4 +31,4 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message New_PR_Merged --attribute data=eyJ6b25lIjoidXMtY2VudHJhbDEtYSIsICJsYWJlbCI6InNjaGVkdWxlPXRlc3QifQ==
+        gcloud pubsub topics publish notifications. --message New_PR_Merged --attribute zone="us-central1-a", label="schedule=test"
