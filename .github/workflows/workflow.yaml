@@ -32,4 +32,3 @@ jobs:
           
     - run: |-
         gcloud pubsub topics publish notifications. --message New_PR_Merged --attribute data=eyJ6b25lIjoidXMtY2VudHJhbDEtYSIsICJsYWJlbCI6InNjaGVkdWxlPXRlc3QifQ==
-        gcloud pubsub subscriptions pull
