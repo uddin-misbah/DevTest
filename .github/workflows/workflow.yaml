@@ -39,6 +39,5 @@ env:
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           project_id: ${{ secrets.PUBSUB_PROJECT }}
           export_default_credentials: true
-      
       - run: |-
         gcloud pubsub topics publish notifications. --message "createdbymisbah"
