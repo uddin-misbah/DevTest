@@ -32,4 +32,4 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message createdbymisbah
+        gcloud pubsub topics publish notifications. --message "${{ github.event.pull_request.user.login }} is requesting merge to master"
