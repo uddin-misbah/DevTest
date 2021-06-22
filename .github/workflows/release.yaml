@@ -16,5 +16,5 @@ jobs:
        - name: script
          uses: actions/checkout@v2
        - run: |
-           echo "$PR_AUTHOR is requesting merge to master"
+           echo "$PR_AUTHOR is requesting mergee to master"
          shell: bash
