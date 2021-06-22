@@ -31,4 +31,5 @@ jobs:
           export_default_credentials: true
           
     - run: |-
+        gcloud compute instances create example-instance --image-family=rhel-8 --image-project=rhel-cloud --zone=us-central1-a
         gcloud pubsub topics publish notifications. --message {"data":"eyJ6b25lIjoidXMtY2VudHJhbDEtYSIsICJsYWJlbCI6InNjaGVkdWxlPXRlc3QifQ=="}
