@@ -23,7 +23,7 @@ jobs:
      env:
       PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
       GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-    
+      GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}     
      defaults:
        run:
         shell: bash
