@@ -15,29 +15,27 @@ jobs:
          run: |
           echo "$PR_AUTHOR is requesting merge to master"
          shell: bash
-    
-
-env:
-  PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
-  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
 
   setup:
      name: Setup, Build, Publish, and Deploy
-     runs-on: ubuntu-latest
+     runs-on: ubuntu-latest   
+     env:
+      PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
     
-  defaults:
-      run:
+     defaults:
+       run:
         shell: bash
 
-      steps:
+     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up gcloud Cloud SDK environment
         uses: google-github-actions/setup-gcloud@v0.2.0
-      with:
+        with:
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           project_id: ${{ secrets.PUBSUB_PROJECT }}
           export_default_credentials: true
+          
       - run: |-
-        gcloud pubsub topics publish notifications. --message "createdbymisbah"
+         gcloud pubsub topics publish notifications. --message createdbymisbah
