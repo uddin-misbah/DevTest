@@ -1,17 +1,1 @@
-name: 'Terraform CD'
 
-on:
-  pull_request:
-    branches:
-      - master
-         
-jobs:
-  test:
-       runs-on: ubuntu-latest
-       env:
-          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
-       steps:
-       - name: script
-         run: |
-          echo "$PR_AUTHOR is requesting merge to master"
-         shell: bash
