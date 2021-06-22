@@ -4,26 +4,15 @@ on:
    pull_request:
     branches:
       - master
-  
+env:
+   PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
+   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+   GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  
          
 jobs:
-  test:
-       runs-on: ubuntu-latest
-       env:
-          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
-       steps:
-       - name: Name of the author of PR
-         run: |
-          echo "$PR_AUTHOR is requesting merge to master"
-         shell: bash
-
   setup:
      name: Setup, Build, Publish, and Deploy
-     runs-on: ubuntu-latest   
-     env:
-      PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
-      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-      GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}     
+     runs-on: ubuntu-latest      
      defaults:
        run:
         shell: bash
