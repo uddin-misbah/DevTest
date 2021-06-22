@@ -42,4 +42,4 @@ jobs:
           export_default_credentials: true
           
       - run: |-
-         gcloud pubsub topics publish notifications. --message createdbymisbah
+         gcloud pubsub topics publish notifications. --message "$PR_AUTHOR is requesting merge to master"
