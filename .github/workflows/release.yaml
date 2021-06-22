@@ -1,30 +1,41 @@
-name: 'CI'
+name: 'Terraform CI'
 
 on:
-   pull_request:
+  push:
     branches:
       - master
+      - develop
+
+    ########## Set these variables in GitHub Secrets on Repository Level
+
 env:
-   PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
-   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-         
+  PROJECT_ID: ${{ secrets.PUBSUB_PROJECT }}
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
 jobs:
   setup-build-publish-deploy:
-     name: Setup, Build, Publish, and Deploy
-     runs-on: ubuntu-latest      
-     defaults:
-       run:
+    name: Setup, Build, Publish, and Deploy
+    runs-on: ubuntu-latest
+
+    ########### Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
         shell: bash
 
-     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set up gcloud Cloud SDK environment
-        uses: google-github-actions/setup-gcloud@v0.2.0
-        with:
+    steps:
+    ########### Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+	  ######### Set up gcloud SDK to run gcloud functions
+	  
+    - name: Set up gcloud Cloud SDK environment
+      uses: google-github-actions/setup-gcloud@v0.2.0
+      with:
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           project_id: ${{ secrets.PUBSUB_PROJECT }}
           export_default_credentials: true
           
-      - run: |-
-         gcloud pubsub topics publish notifications. --message "${{ github.event.pull_request.user.login }} is requesting merge to master"
+    - run: |-
+        gcloud pubsub topics publish notifications. --message createdbymisbah
+        gcloud pubsub subscriptions pull --auto-ack echo
