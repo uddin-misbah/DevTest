@@ -31,4 +31,4 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message Hello, World
+        gcloud pubsub topics publish notifications. --message {"Hello":"World"}
