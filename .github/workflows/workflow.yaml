@@ -31,4 +31,4 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message {"zone":"us-central1-a", "label":"schedule:test"}
+        gcloud pubsub topics publish notifications. --message {"data":"eyJ6b25lIjoidXMtY2VudHJhbDEtYSIsICJsYWJlbCI6InNjaGVkdWxlPXRlc3QifQ=="}
