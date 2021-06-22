@@ -31,4 +31,4 @@ jobs:
           export_default_credentials: true
           
     - run: |-
-        gcloud pubsub topics publish notifications. --message Updated by Misbah
+        gcloud pubsub topics publish notifications. --message "Updated by Misbah"
